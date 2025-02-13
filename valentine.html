@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Valentine's Question</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f9e3e3;
+      font-family: Arial, sans-serif;
+      flex-direction: column;
+      cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="red" d="M12 4.248c-3.148-5.402-12-3.825-12 2.944 0 4.661 5.571 9.427 12 15.808 6.43-6.381 12-11.147 12-15.808 0-6.792-8.875-8.306-12-2.944z"/></svg>'), auto;
+    }
+
+    .container {
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      color: #d14a7a;
+      margin-bottom: 20px;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.5s ease;
+      position: relative;
+    }
+
+    #yesButton {
+      background-color: #d14a7a;
+      color: white;
+    }
+
+    #noButton {
+      background-color: #ccc;
+      color: black;
+    }
+
+    #randomText {
+      margin-top: 20px;
+      font-size: 1.2rem;
+      color: #d14a7a;
+    }
+
+    #catGif {
+      max-width: 200px; /* Adjust the size as needed */
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Add the cat.gif image here -->
+    <img id="catGif" src="cat.gif" alt="Cute Cat">
+    <h1 id="valentineText">Will you be my valentine?</h1>
+    <div class="buttons">
+      <button id="yesButton">Yes</button>
+      <button id="noButton">No</button>
+    </div>
+    <div id="randomText"></div>
+  </div>
+
+  <script>
+    const noButton = document.getElementById('noButton');
+    const yesButton = document.getElementById('yesButton');
+    const randomText = document.getElementById('randomText');
+    const catGif = document.getElementById('catGif');
+    const valentineText = document.getElementById('valentineText');
+
+    let yesButtonFontSize = 1.2; // Initial font size in rem
+    const messages = [
+      "Pogii ako (sabi ni mama)",
+      "Are you sure?",
+      "Sige iiyak ako",
+      "ha ha ha ha ha :((",
+      "i love cats..",
+      "AYOS NAMAN TAYU GUYZZ!",
+      "ok sige..",
+    ];
+
+    noButton.addEventListener('mouseover', () => {
+      const randomX = Math.floor(Math.random() * 400) - 200;
+      const randomY = Math.floor(Math.random() * 400) - 200;
+
+      noButton.style.transform = `translate(${randomX}px, ${randomY}px)`;
+
+      yesButtonFontSize += 5; 
+      yesButton.style.fontSize = `${yesButtonFontSize}rem`;
+
+      const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+      randomText.textContent = randomMessage;
+
+      // Change the image to sadcat.jpg
+      catGif.src = "sadcat.jpg";
+
+      // Revert back to cat.gif after 2 seconds
+      setTimeout(() => {
+        catGif.src = "cat.gif";
+      }, 500); // 500 milliseconds = 0.5 seconds
+    });
+
+    yesButton.addEventListener('click', () => {
+    // Change the image to capybara.jpg
+    catGif.src = "capybara.jpg";
+
+    // Change the text to "YONOHHH! <33333333"
+    valentineText.textContent = "YONOHHH! <33333333";
+
+    // Wait for 3 seconds before opening Gmail
+    setTimeout(() => {
+        const recipient = "napaychristianpaolo@gmail.com";
+        const subject = "Answer";
+        const body = "Yes, I would love to!";
+        const gmailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=${recipient}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        window.open(gmailLink, '_blank');
+    }, 3000); // 3000 milliseconds = 3 seconds
+    });
+  </script>
+</body>
+</html>
