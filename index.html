@@ -127,14 +127,12 @@
 
     // Wait for 3 seconds before opening Gmail
     setTimeout(() => {
-    const recipient = "napaychristianpaolo@gmail.com";
-    const subject = "hhmhmhmhmhmhmhhm";
-    const body = "YESSSSSSSSSSSSSSS!";
-    const gmailLink = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    
-    // Redirect instead of opening a new tab
-    window.location.href = gmailLink;
-}, 3000);
+        const recipient = "napaychristianpaolo@gmail.com";
+        const subject = "!!!!!!!!!!!";
+        const body = "Yes yes yes yes";
+        const gmailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=${recipient}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        window.open(gmailLink, '_blank');
+    }, 3000); // 3000 milliseconds = 3 seconds
 
     });
   </script>
